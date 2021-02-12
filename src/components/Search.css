@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 6fr;
 }
 
 .sidebar {
@@ -24,18 +24,48 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin: 5px;
 }
 
-.search {
-    height: 25px;
+.searchInput {
+    height: 33px;
+    width: 150px;
+    margin: 30px 30px 0px 30px;
+    border: black 4px solid;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: .9rem;
+    text-align: center;
+    padding: 5px;
+}
+
+h2 {
+    margin: 5px;
+    font-size: 1rem;
+    color: orangered;
+}
+
+.searchInput:focus {
+    border: orangered 4px solid;
+}
+
+.pokeSelect {
+    margin: 15px;
+    border: black 4px solid;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: .9rem;
+    text-align: center;
+    padding: 5px;
+}
+
+.pokeSelect:focus {
+    border: orangered 4px solid;
 }
 
 .pokeDisplay {
     width: 100%;
     height: 100%;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;

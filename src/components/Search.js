@@ -52,8 +52,12 @@ export default class Search extends React.Component {
             <main className="searchMain">
 
                 <div className="sidebar">
-                    <input className="search" onChange={this.handleInputchange}></input>
+                    <input 
+                    type="text"
+                    className="searchInput" 
+                    onChange={this.handleInputchange}></input>
                     {/* <button className="searchButton" onClick={this.handleInputchange}>find that pokemon!</button> */}
+                    <h2>search</h2>
                     
                     <select 
                     className="pokeSelect"

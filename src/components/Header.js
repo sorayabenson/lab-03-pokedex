@@ -3,11 +3,9 @@ import './Header.css';
 function Header() {
   return (
     <header className="pokeHeader">
+        <a className="headerLink" href="/">home</a>
         <h1 className="h1">pokedex!</h1>
-        <div className="linkWrapper">    
-            <a className="headerLink" href="/">home</a>
-            <a className="headerLink" href="/search">search</a>
-        </div>
+        <a className="headerLink" href="/search">search</a>
     </header>
   );
 }
