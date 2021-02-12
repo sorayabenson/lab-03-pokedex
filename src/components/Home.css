@@ -17,6 +17,23 @@
     align-items: center;
 }
 
+.link {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.link:hover {
+    filter: saturate(200%);
+    transition: .5s ease-in-out;
+}
+
+.link:visited {
+    text-decoration: none;
+}
+
 h1 {
     font-family: 'Bowlby One SC', cursive;
     font-size: 5rem;
