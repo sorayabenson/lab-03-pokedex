@@ -1,5 +1,5 @@
 import './Header.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 function Header() {
   return (
@@ -18,4 +18,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default withRouter(Header);
