@@ -1,0 +1,22 @@
+.pokeHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.h1 {
+    font-size: 2rem;
+}
+
+.linkWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerLink {
+    font-size: 1rem;
+    margin: 15px;
+}
