@@ -7,7 +7,7 @@ export default class PokeList extends Component {
 
         const PokeWrapper = this.props.filteredPokes.map(
             pokemon => <PokeItem
-                key={pokemon.id}
+                key={pokemon._id}
                 pokemonProp={pokemon} />
         )
 

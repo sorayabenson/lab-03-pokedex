@@ -7,8 +7,8 @@ export default class PokeItem extends Component {
             <li className="pokemonli">
                 <img alt={this.props.pokemonProp.pokemon} src={this.props.pokemonProp.url_image} />
                 <h3 className="name">{this.props.pokemonProp.pokemon}</h3>
-                <h6 className="health">hp: {this.props.pokemonProp.hp}</h6>
                 <div className="statsWrapper">
+                    <h6 className="health">hp: {this.props.pokemonProp.hp}</h6>
                     <h6 className="attack">attack: {this.props.pokemonProp.attack}</h6>
                     <h6 className="defense">defense: {this.props.pokemonProp.defense}</h6>
                 </div>
