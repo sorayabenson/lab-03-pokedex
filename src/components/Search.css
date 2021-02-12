@@ -26,10 +26,15 @@
     align-items: center;
 }
 
+.search {
+    height: 25px;
+}
+
 .pokeDisplay {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
