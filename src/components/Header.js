@@ -1,12 +1,20 @@
 import './Header.css';
+import { NavLink } from 'react-router-dom';
 
 function Header() {
   return (
-    <header className="pokeHeader">
-        <a className="headerLink" href="/">home</a>
+    <nav 
+    className="pokeHeader"
+    role="navigation"
+    aria-label="main navigation">
+        <NavLink className="headerLink" 
+        to="/"
+        exact>home</NavLink>
         <h1 className="h1">pokedex!</h1>
-        <a className="headerLink" href="/search">search</a>
-    </header>
+        <NavLink className="headerLink"
+        to="/search"
+        exact>search</NavLink>
+    </nav>
   );
 }
 
