@@ -7,19 +7,11 @@ import { pokemons } from '../data.js';
 export default class Search extends React.Component {
     state = {
         pokemons: pokemons,
-        loading: false,
         query: '',
         sortBy: 'pokemon',
-        // sortOrder: 'ascending',
+        sortOrder: 'ascending',
         
     }
-
-    // loadPokemons = () => {
-    //     this.setState({
-    //         loading: true,
-    //         pokemons: [],
-    //     })
-    // }
 
     handleChange = (e) => {
         this.setState({
@@ -33,17 +25,23 @@ export default class Search extends React.Component {
         });
     }
 
+    handleOrderChange = (e) => {
+        this.setState({
+           sortOrder: e.target.value, 
+        });
+    }
+
     render() {
 
-        // const filteredPokes = pokemons.filter((pokemon) => {
-        //     if (!this.state.pokemon) return true;
+        const sortedPokes = typeof this.state.pokemons[0][this.state.sortBy];
 
-        //     return false;
-        // })
-
-        this.state.pokemons.sort(
-            (a, b) => a[this.state.sortBy].localeCompare(b[this.state.sortBy])
-        );
+        if (this.state.sortOrder === 'ascending') {
+            if (sortedPokes === 'string') this.state.pokemons.sort((a, b) => a[this.state.sortBy].localeCompare(b[this.state.sortBy]));
+            if (sortedPokes === 'number') this.state.pokemons.sort((a, b) => a[this.state.sortBy] - (b[this.state.sortBy]));
+        } else {
+            if (sortedPokes === 'string') this.state.pokemons.sort((a, b) => b[this.state.sortBy].localeCompare(a[this.state.sortBy]));
+            if (sortedPokes === 'number') this.state.pokemons.sort((a, b) => b[this.state.sortBy] - (a[this.state.sortBy]));
+        }
 
         const filteredPokes = this.state.pokemons.filter(pokemon => pokemon.pokemon.includes(this.state.query))
 
@@ -56,6 +54,7 @@ export default class Search extends React.Component {
                 <div className="sidebar">
                     <input className="search" onChange={this.handleInputchange}></input>
                     {/* <button className="searchButton" onClick={this.handleInputchange}>find that pokemon!</button> */}
+                    
                     <select 
                     className="pokeSelect"
                     onChange={this.handleChange}>
@@ -65,10 +64,13 @@ export default class Search extends React.Component {
                         <option value="attack">attack</option>
                         <option value="defense">defense</option>
                     </select>
-                    {/* <select className="pokeSelect">
-                        <option>ascending</option>
-                        <option>descending</option>
-                    </select> */}
+
+                    <select 
+                    className="pokeSelect"
+                    onChange={this.handleOrderChange}>
+                        <option value="ascending">ascending</option>
+                        <option value="descending">descending</option>
+                    </select>
                 </div>
 
                 <div className="pokeDisplay">
