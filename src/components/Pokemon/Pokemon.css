@@ -1,0 +1,47 @@
+.pokeWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+}
+
+.pokemonli {
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: black 4px solid;
+    box-shadow: black 3px 3px;
+    margin: 15px;
+}
+
+.pokemonli img {
+    width: 150px;
+    height: auto;
+}
+
+.name {
+    margin: 0px;
+}
+
+h6 {
+    margin: 0px;
+}
+
+.statsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: left;
+}
+
+.statsWrapper h6 {
+    margin: 5px;
+}
+
+p {
+    margin: 0px;
+}
