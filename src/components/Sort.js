@@ -6,7 +6,6 @@ export default class Sort extends Component {
             <div>
                 <select 
                 className="pokeSelect"
-                value={this.props.currentValue}
                 onChange={this.props.handleChange}>
                     
                     {
@@ -15,21 +14,6 @@ export default class Sort extends Component {
                     }
                     
                 </select>
-                {/* <select 
-                className="pokeSelect"
-                onChange={this.props.handleChange}>
-                    <option value="pokemon">name</option>
-                    <option value="type_1">type</option>
-                    <option value="hp">hp</option>
-                    <option value="attack">attack</option>
-                    <option value="defense">defense</option>
-                </select> */}
-                {/* <select 
-                className="pokeSelect"
-                onChange={this.props.handleOrderChange}>
-                    <option value="ascending">ascending</option>
-                    <option value="descending">descending</option>
-                </select> */}
 
             </div>
         )

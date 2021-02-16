@@ -57,7 +57,6 @@ export default class Search extends React.Component {
                     <Searchbar handleChange={this.handleInputChange} />
                     
                     <Sort
-                    currentValue={this.state.sortBy} 
                     handleChange={this.handleChange}
                     pokeOptions={[
                         {name: 'name', value: 'pokemon'},
@@ -67,7 +66,6 @@ export default class Search extends React.Component {
                         {name: 'defense', value: 'defense'}]}/>
 
                     <Sort
-                    currentValue={this.state.sortOrder} 
                     handleChange={this.handleOrderChange}
                     pokeOptions={[
                         {name: 'ascending', value: 'ascending'},
