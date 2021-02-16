@@ -2,6 +2,8 @@ import React from 'react';
 import './Search.css';
 import Header from './Header.js';
 import PokeList from './Pokemon/PokeList.js';
+import Searchbar from './Searchbar.js';
+import Sort from './Sort.js';
 import { pokemons } from '../data.js';
 
 export default class Search extends React.Component {
@@ -19,7 +21,7 @@ export default class Search extends React.Component {
         });
     }
 
-    handleInputchange = (e) => {
+    handleInputChange = (e) => {
         this.setState({
             query: e.target.value,
         });
@@ -52,29 +54,25 @@ export default class Search extends React.Component {
             <main className="searchMain">
 
                 <div className="sidebar">
-                    <input 
-                    type="text"
-                    className="searchInput" 
-                    onChange={this.handleInputchange}></input>
-                    {/* <button className="searchButton" onClick={this.handleInputchange}>find that pokemon!</button> */}
-                    <h2>search</h2>
+                    <Searchbar handleChange={this.handleInputChange} />
                     
-                    <select 
-                    className="pokeSelect"
-                    onChange={this.handleChange}>
-                        <option value="pokemon">name</option>
-                        <option value="type_1">type</option>
-                        <option value="hp">hp</option>
-                        <option value="attack">attack</option>
-                        <option value="defense">defense</option>
-                    </select>
+                    <Sort
+                    currentValue={this.state.sortBy} 
+                    handleChange={this.handleChange}
+                    pokeOptions={[
+                        {name: 'name', value: 'pokemon'},
+                        {name: 'type', value: 'type_1'},
+                        {name: 'hp', value: 'hp'},
+                        {name: 'attack', value: 'attack'},
+                        {name: 'defense', value: 'defense'}]}/>
 
-                    <select 
-                    className="pokeSelect"
-                    onChange={this.handleOrderChange}>
-                        <option value="ascending">ascending</option>
-                        <option value="descending">descending</option>
-                    </select>
+                    <Sort
+                    currentValue={this.state.sortOrder} 
+                    handleChange={this.handleOrderChange}
+                    pokeOptions={[
+                        {name: 'ascending', value: 'ascending'},
+                        {name: 'descending', value: 'descending'}
+                        ]}/>
                 </div>
 
                 <div className="pokeDisplay">
