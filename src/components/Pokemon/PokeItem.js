@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Pokemon.css';
+import egg from '../assets/egg.png';
 
 export default class PokeItem extends Component {
     render() {
@@ -14,6 +15,11 @@ export default class PokeItem extends Component {
                 </div>
                 <p className="type">type: {this.props.pokemonProp.type_1}</p>
                 <p className="ability">ability: {this.props.pokemonProp.ability_1}</p>
+
+                <div className="eggWrapper">
+                    <img alt="broken egg" src={egg} />
+                    <h6 className="egg">{this.props.pokemonProp.egg_group_1}</h6>
+                </div>
             </li>
         )
     }

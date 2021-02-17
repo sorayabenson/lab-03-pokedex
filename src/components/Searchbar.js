@@ -6,12 +6,12 @@ export default class Searchbar extends Component {
             <div className="searchbar">
                 <input 
                 type="text"
+                placeholder="search"
                 className="searchInput"
                 onChange={this.props.handleChange} 
                 >
                 </input>
-                
-                <button onClick={this.props.handleClick}>search!</button>
+
             </div>
         )
     }

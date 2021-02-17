@@ -54,7 +54,7 @@ button:hover {
 .searchInput {
     height: 33px;
     width: 150px;
-    margin: 30px 30px 0px 30px;
+    margin: 30px 30px 15px 30px;
     border: black 4px solid;
     font-family: 'Raleway', sans-serif;
     font-weight: 500;
