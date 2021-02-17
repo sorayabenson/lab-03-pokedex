@@ -29,7 +29,7 @@
 }
 
 h6 {
-    margin: 0px;
+    margin: 5px;
 }
 
 .statsWrapper {
@@ -39,10 +39,20 @@ h6 {
     align-items: left;
 }
 
-.statsWrapper h6 {
-    margin: 5px;
-}
 
 p {
     margin: 0px;
+}
+
+.eggWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: left;
+    margin: 10px;
+}
+
+.eggWrapper img{
+    height: 20px;
+    width: auto;
 }

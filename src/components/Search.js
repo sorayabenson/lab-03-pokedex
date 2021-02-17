@@ -1,49 +1,62 @@
 import React from 'react';
+import request from 'superagent';
 import './Search.css';
 import Header from './Header.js';
 import PokeList from './Pokemon/PokeList.js';
 import Searchbar from './Searchbar.js';
+import Spinner from './Spinner.js';
 import Sort from './Sort.js';
-import { pokemons } from '../data.js';
 
 export default class Search extends React.Component {
     state = {
-        pokemons: pokemons,
+        pokemons: [],
         query: '',
+        sortOrder: 'asc',
         sortBy: 'pokemon',
-        sortOrder: 'ascending',
+        loading: false,
         
     }
 
-    handleChange = (e) => {
-        this.setState({
-           sortBy: e.target.value, 
-        });
-    }
-
-    handleInputChange = (e) => {
+    handleInputChange = async (e) => {
         this.setState({
             query: e.target.value,
         });
     }
 
-    handleOrderChange = (e) => {
-        this.setState({
+    handleClick = async () => {
+
+        await this.fetchPokemon();
+    }
+
+    handleChange = async (e) => {
+        await this.setState({
+           sortBy: e.target.value, 
+        });
+
+    }
+
+    handleOrderChange = async (e) => {
+        await this.setState({
            sortOrder: e.target.value, 
         });
     }
 
+    componentDidMount = async () => {
+        await this.fetchPokemon();
+    }
+
+    fetchPokemon = async () => {
+        this.setState({ loading: true });
+
+        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${this.state.sortBy}=${this.state.query}&sort=${this.state.sortBy}&direction=${this.state.sortOrder}`);
+
+        this.setState({
+            pokemons: data.body.results,
+            loading: false,
+        });
+    }
+    
     render() {
-
-        const sortedPokes = typeof this.state.pokemons[0][this.state.sortBy];
-
-        if (this.state.sortOrder === 'ascending') {
-            if (sortedPokes === 'string') this.state.pokemons.sort((a, b) => a[this.state.sortBy].localeCompare(b[this.state.sortBy]));
-            if (sortedPokes === 'number') this.state.pokemons.sort((a, b) => a[this.state.sortBy] - (b[this.state.sortBy]));
-        } else {
-            if (sortedPokes === 'string') this.state.pokemons.sort((a, b) => b[this.state.sortBy].localeCompare(a[this.state.sortBy]));
-            if (sortedPokes === 'number') this.state.pokemons.sort((a, b) => b[this.state.sortBy] - (a[this.state.sortBy]));
-        }
 
         const filteredPokes = this.state.pokemons.filter(pokemon => pokemon.pokemon.includes(this.state.query))
 
@@ -54,27 +67,36 @@ export default class Search extends React.Component {
             <main className="searchMain">
 
                 <div className="sidebar">
-                    <Searchbar handleChange={this.handleInputChange} />
+                    <Searchbar 
+                    handleChange={this.handleInputChange}
+                    />
                     
                     <Sort
                     handleChange={this.handleChange}
                     pokeOptions={[
                         {name: 'name', value: 'pokemon'},
                         {name: 'type', value: 'type_1'},
-                        {name: 'hp', value: 'hp'},
-                        {name: 'attack', value: 'attack'},
-                        {name: 'defense', value: 'defense'}]}/>
+                        {name: 'ability', value: 'ability_1'},
+                        {name: 'shape', value: 'shape'},
+                        {name: 'egg', value: 'egg_group_1'}
+                    ]}/>
 
                     <Sort
                     handleChange={this.handleOrderChange}
                     pokeOptions={[
-                        {name: 'ascending', value: 'ascending'},
-                        {name: 'descending', value: 'descending'}
+                        {name: 'ascending', value: 'asc'},
+                        {name: 'descending', value: 'desc'}
                         ]}/>
+
+                    <button onClick={this.handleClick}>go!</button>
                 </div>
 
                 <div className="pokeDisplay">
-                    <PokeList filteredPokes={filteredPokes} />
+                    {
+                    this.state.loading
+                    ? <Spinner />
+                    : <PokeList filteredPokes={filteredPokes} />
+                    }
                 </div>
 
             </main>
