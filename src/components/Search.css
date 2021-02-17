@@ -15,7 +15,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    grid-template-columns: 1fr 6fr;
+    grid-template-columns: 1fr 6fr 1fr;
 }
 
 .sidebar {
@@ -91,7 +91,23 @@ h2 {
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: co;
     justify-content: flex-start;
     align-items: center;
+}
+
+.buttonWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 0px 0px 30px -30px;
+    position: fixed;
+    bottom: 0;
+}
+
+.buttonWrapper button {
+    margin: 0;
 }

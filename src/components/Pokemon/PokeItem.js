@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import './Pokemon.css';
 import egg from '../assets/egg.png';
+import { Link } from 'react-router-dom';
 
 export default class PokeItem extends Component {
     render() {
         return (
-            <li className="pokemonli">
+            <Link 
+            to={this.props.pokemonProp.pokemon}
+            className="pokemonli">
                 <img alt={this.props.pokemonProp.pokemon} src={this.props.pokemonProp.url_image} />
                 <h3 className="name">{this.props.pokemonProp.pokemon}</h3>
                 <div className="statsWrapper">
@@ -20,7 +23,7 @@ export default class PokeItem extends Component {
                     <img alt="broken egg" src={egg} />
                     <h6 className="egg">{this.props.pokemonProp.egg_group_1}</h6>
                 </div>
-            </li>
+            </Link>
         )
     }
 }

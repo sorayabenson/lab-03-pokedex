@@ -89,6 +89,7 @@ export default class Search extends React.Component {
                         ]}/>
 
                     <button onClick={this.handleClick}>go!</button>
+
                 </div>
 
                 <div className="pokeDisplay">
@@ -97,6 +98,12 @@ export default class Search extends React.Component {
                     ? <Spinner />
                     : <PokeList filteredPokes={filteredPokes} />
                     }
+                </div>
+
+                <div className="buttonWrapper">
+                    <button className="previous">p</button>
+                    <h6>page</h6>
+                    <button className="next">n</button>
                 </div>
 
             </main>
