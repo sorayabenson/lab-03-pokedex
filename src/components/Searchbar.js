@@ -3,14 +3,15 @@ import React, { Component } from 'react'
 export default class Searchbar extends Component {
     render() {
         return (
-            <div>
+            <div className="searchbar">
                 <input 
                 type="text"
-                className="searchInput" 
-                onChange={this.props.handleChange}>
+                className="searchInput"
+                onChange={this.props.handleChange} 
+                >
                 </input>
                 
-                <h2>search</h2>
+                <button onClick={this.props.handleClick}>search!</button>
             </div>
         )
     }
