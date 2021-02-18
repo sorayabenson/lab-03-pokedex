@@ -19,8 +19,9 @@ export default class PokeDetail extends Component {
                         <h6 className="attack">attack: {this.props.pokemonProp.attack}</h6>
                         <h6 className="defense">defense: {this.props.pokemonProp.defense}</h6>
                     </div>
-                    <p className="type">type: {this.props.pokemonProp.type_1}</p>
+                    <p className="type">type: {this.props.pokemonProp.type_1}, {this.props.pokemonProp.type_2}</p>
                     <p className="ability">ability: {this.props.pokemonProp.ability_1}</p>
+                    <p>hidden ability: {this.props.pokemonProp.ability_hidden}</p>
 
                     <div className="eggWrapperDetail">
                         <img alt="broken egg" src={egg} />

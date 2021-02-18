@@ -52,7 +52,7 @@
 }
 
 .pokemonli p {
-    margin: 0px;
+    margin: 4px;
 }
 
 .eggWrapper {
@@ -71,9 +71,9 @@
 .pokemonDetail {
     width: 400px;
     height: 600px;
-    display: grid;
-    flex-direction: row;
-    grid-template-rows: 1fr 2fr;
+    display: flex;
+    flex-direction: column;
+    /* grid-template-rows: 1fr 1fr; */
     justify-content: center;
     align-items: center;
     border: black 4px solid;
@@ -88,9 +88,10 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
-    background-color: blue;
+    position: relative;
+    z-index: 1;
 }
 
 .detailStatsWrapper {
@@ -100,16 +101,29 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    background-color: blueviolet;
+    position: relative;
+    z-index: 2;
+    bottom: 70px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 1));
 }
 
 .pokemonDetail h3 {
     font-family: 'Bowlby One SC', cursive;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 300;
     text-shadow: orangered 2px 2px;
     margin: 0px;
     text-align: center;
+}
+
+.pokemonDetail h6 {
+    font-size: 1.1rem;
+    margin: 7px;
+}
+
+.pokemonDetail p {
+    font-size: 1.1rem;
+    margin: 4px;
 }
 
 .detailImg {
@@ -124,8 +138,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: left;
-    z-index: 1;
+    align-items: center;
 }
 
 .eggWrapperDetail {
@@ -133,9 +146,10 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: left;
+    margin: 10px;
 }
 
 .eggWrapperDetail img {
-    height: 40px;
+    height: 35px;
     width: auto;
 }
