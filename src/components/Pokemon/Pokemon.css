@@ -17,6 +17,18 @@
     box-shadow: black 3px 3px;
     margin: 15px;
     background: white;
+    color: black;
+    text-decoration: none;
+}
+
+.pokemonli:hover {
+    border: orangered 4px solid;
+    box-shadow: orangered 3px 3px;
+    transition: 0.2s ease-in-out;
+}
+
+.pokemonli:visited {
+    color: black;
 }
 
 .pokemonli img {
@@ -28,7 +40,7 @@
     margin: 0px;
 }
 
-h6 {
+.pokemonli h6 {
     margin: 5px;
 }
 
@@ -39,9 +51,8 @@ h6 {
     align-items: left;
 }
 
-
-p {
-    margin: 0px;
+.pokemonli p {
+    margin: 4px;
 }
 
 .eggWrapper {
@@ -54,5 +65,91 @@ p {
 
 .eggWrapper img{
     height: 20px;
+    width: auto;
+}
+
+.pokemonDetail {
+    width: 400px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    /* grid-template-rows: 1fr 1fr; */
+    justify-content: center;
+    align-items: center;
+    border: black 4px solid;
+    box-shadow: black 3px 3px;
+    background: white;
+    color: black;
+    text-decoration: none;
+}
+
+.detailImageWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.detailStatsWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    bottom: 70px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 1));
+}
+
+.pokemonDetail h3 {
+    font-family: 'Bowlby One SC', cursive;
+    font-size: 2.2rem;
+    font-weight: 300;
+    text-shadow: orangered 2px 2px;
+    margin: 0px;
+    text-align: center;
+}
+
+.pokemonDetail h6 {
+    font-size: 1.1rem;
+    margin: 7px;
+}
+
+.pokemonDetail p {
+    font-size: 1.1rem;
+    margin: 4px;
+}
+
+.detailImg {
+    width: 500px;
+    height: auto;
+    -webkit-filter: drop-shadow(5px 5px 0px black);
+    filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.4));
+    z-index: 2;
+}
+
+.statsWrapperDetail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.eggWrapperDetail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: left;
+    margin: 10px;
+}
+
+.eggWrapperDetail img {
+    height: 35px;
     width: auto;
 }
