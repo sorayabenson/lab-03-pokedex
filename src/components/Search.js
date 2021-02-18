@@ -16,6 +16,8 @@ export default class Search extends React.Component {
         sortBy: 'pokemon',
         loading: false,
         currentPage: 1,
+        perPage: 20,
+        totalPokemon: 0,
         
     }
 
@@ -25,22 +27,27 @@ export default class Search extends React.Component {
         });
     }
 
-    handleClick = async () => {
-
-        await this.fetchPokemon();
-    }
-
     handleChange = async (e) => {
         await this.setState({
            sortBy: e.target.value, 
         });
-
     }
 
     handleOrderChange = async (e) => {
         await this.setState({
            sortOrder: e.target.value, 
         });
+    }
+
+    handleClick = async () => {
+        await this.setState({currentPage: 1})
+        await this.fetchPokemon();
+    }
+
+    handleDropdown = async (e) => {
+        await this.setState({
+            perPage: e.target.value,
+        })
     }
 
     previousPage = async () => {
@@ -67,17 +74,20 @@ export default class Search extends React.Component {
     fetchPokemon = async () => {
         this.setState({ loading: true });
 
-        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${this.state.sortBy}=${this.state.query}&sort=${this.state.sortBy}&direction=${this.state.sortOrder}&page=${this.state.currentPage}&perPage=20`);
+        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${this.state.sortBy}=${this.state.query}&sort=${this.state.sortBy}&direction=${this.state.sortOrder}&page=${this.state.currentPage}&perPage=${this.state.perPage}`);
 
         this.setState({
             pokemons: data.body.results,
             loading: false,
+            totalPokemon: data.body.count,
         });
     }
-    
-    render() {
 
+    render() {
+        
         const filteredPokes = this.state.pokemons.filter(pokemon => pokemon.pokemon.includes(this.state.query))
+
+        const lastPage = Math.ceil(this.state.totalPokemon / this.state.perPage);
 
         return (
         <div className="search">
@@ -107,6 +117,15 @@ export default class Search extends React.Component {
                         {name: 'descending', value: 'desc'}
                         ]}/>
 
+                    <Sort
+                    handleChange={this.handleDropdown}
+                    pokeOptions={[
+                        {name: `show 10 per page`, value: 10},
+                        {name: `show 20 per page`, value: 20},
+                        {name: `show 50 per page`, value: 50},
+                        {name: `show 100 per page`, value: 100}
+                    ]}/>
+
                     <button onClick={this.handleClick}>go!</button>
 
                 </div>
@@ -122,15 +141,17 @@ export default class Search extends React.Component {
                 <div className="buttonWrapper">
                     <button 
                     className="previous" 
-                    onClick={this.previousPage}>
+                    onClick={this.previousPage}
+                    disabled={this.state.currentPage === 1}>
                         <img alt="arrow button" src={arrow}/>
                     </button>
 
-                    <h6>page: {this.state.currentPage}</h6>
+                    <h6>page {this.state.currentPage}</h6>
 
                     <button 
                     className="next" 
-                    onClick={this.nextPage}>
+                    onClick={this.nextPage}
+                    disabled={this.state.currentPage === lastPage}>
                         <img alt="arrow button" src={arrow}/>
                     </button>
                 </div>

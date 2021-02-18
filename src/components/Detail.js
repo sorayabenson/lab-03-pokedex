@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import request from 'superagent';
 import './Detail.css';
 import PokeItem from './Pokemon/PokeItem.js';
+import PokeDetail from './Pokemon/PokeDetail.js';
 import Header from './Header.js';
 import Spinner from './Spinner.js';
 
@@ -34,7 +35,7 @@ export default class Detail extends Component {
                     {
                     this.state.loading
                     ? <Spinner />
-                    : <PokeItem pokemonProp={pokemon}/>
+                    : <PokeDetail pokemonProp={pokemon}/>
                     }
                 
                 </main>

@@ -49,6 +49,11 @@ button {
 button:hover {
     border: orangered 4px solid;
     color: orangered;
+    transition: 0.2s ease-in-out;
+}
+
+button:focus {
+    outline: none;
 }
 
 .searchInput {
@@ -71,6 +76,8 @@ h2 {
 
 .searchInput:focus {
     border: orangered 4px solid;
+    outline: none;
+    transition: 0.2s ease-in-out;
 }
 
 .pokeSelect {
@@ -85,6 +92,8 @@ h2 {
 
 .pokeSelect:focus {
     border: orangered 4px solid;
+    outline: none;
+    transition: 0.2s ease-in-out;
 }
 
 .pokeDisplay {
@@ -97,12 +106,10 @@ h2 {
 }
 
 .buttonWrapper {
-    /* width: 100%;
-    height: 100%; */
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     margin: 30px;
     position: fixed;
     bottom: 0;
@@ -119,6 +126,23 @@ h2 {
     margin: 0;
     border: none;
     background: transparent;
+}
+
+.buttonWrapper button:disabled {
+    filter: opacity(0.5);
+}
+
+.previous:hover {
+    -webkit-filter: drop-shadow(-10px 0px orangered);
+    filter: drop-shadow(-10px 0px orangered);
+    transition: 0.2s ease-in-out;
+    
+}
+
+.next:hover {
+    -webkit-filter: drop-shadow(10px 0px orangered);
+    filter: drop-shadow(10px 0px orangered);
+    transition: 0.2s ease-in-out;    
 }
 
 .previous img {
