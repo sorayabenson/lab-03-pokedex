@@ -6,6 +6,7 @@ import PokeList from './Pokemon/PokeList.js';
 import Searchbar from './Searchbar.js';
 import Spinner from './Spinner.js';
 import Sort from './Sort.js';
+import arrow from './assets/arrowButton.png';
 
 export default class Search extends React.Component {
     state = {
@@ -14,6 +15,7 @@ export default class Search extends React.Component {
         sortOrder: 'asc',
         sortBy: 'pokemon',
         loading: false,
+        currentPage: 1,
         
     }
 
@@ -41,14 +43,31 @@ export default class Search extends React.Component {
         });
     }
 
+    previousPage = async () => {
+        this.setState({currentPage: this.state.currentPage - 1});
+    }
+
+    nextPage = async () => {
+        this.setState({currentPage: this.state.currentPage + 1});
+    }
+
     componentDidMount = async () => {
         await this.fetchPokemon();
+    }
+
+    componentDidUpdate = async (prevProps, prevState) => {
+        const oldPageNumber = prevState.currentPage;
+        const newPageNumber = this.state.currentPage;
+
+        if(oldPageNumber !== newPageNumber) {
+            await this.fetchPokemon();
+        }
     }
 
     fetchPokemon = async () => {
         this.setState({ loading: true });
 
-        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${this.state.sortBy}=${this.state.query}&sort=${this.state.sortBy}&direction=${this.state.sortOrder}`);
+        const data = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${this.state.sortBy}=${this.state.query}&sort=${this.state.sortBy}&direction=${this.state.sortOrder}&page=${this.state.currentPage}&perPage=20`);
 
         this.setState({
             pokemons: data.body.results,
@@ -101,9 +120,19 @@ export default class Search extends React.Component {
                 </div>
 
                 <div className="buttonWrapper">
-                    <button className="previous">p</button>
-                    <h6>page</h6>
-                    <button className="next">n</button>
+                    <button 
+                    className="previous" 
+                    onClick={this.previousPage}>
+                        <img alt="arrow button" src={arrow}/>
+                    </button>
+
+                    <h6>page: {this.state.currentPage}</h6>
+
+                    <button 
+                    className="next" 
+                    onClick={this.nextPage}>
+                        <img alt="arrow button" src={arrow}/>
+                    </button>
                 </div>
 
             </main>
